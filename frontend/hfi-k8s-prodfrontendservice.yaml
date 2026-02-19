@@ -3,10 +3,16 @@ kind: Service
 metadata:
   name: hfi-frontend
   namespace: hfi-prod
+  labels:
+    app: hfi-frontend
 spec:
+  type: NodePort
+
   selector:
     app: hfi-frontend
+
   ports:
-    - port: 80
+    - name: http
+      port: 80
       targetPort: 80
-  type: NodePort
+      nodePort: 30080
