@@ -3,15 +3,23 @@ kind: Application
 metadata:
   name: hfi-frontend-prod
   namespace: argocd
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: frontend=registry.gitlab.mfsys.com.pk/hfi/frontend
+    argocd-image-updater.argoproj.io/frontend.update-strategy: latest
+    argocd-image-updater.argocd.io/frontend.allow-tags: regexp:^prod-[0-9]+$
+    argocd-image-updater.argoproj.io/write-back-method: git
 spec:
   project: default
+
   source:
-    repoURL: https://github.com/<ORG>/hfi-k8s-prod.git
+    repoURL: https://github.com/gulbadin1171/HFI-K8S_Manifest-Prod.git
     targetRevision: main
     path: frontend
+
   destination:
     server: https://kubernetes.default.svc
-    namespace: prod
+    namespace: hfi-prod
+
   syncPolicy:
     automated:
       prune: true
