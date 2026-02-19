@@ -3,11 +3,6 @@ kind: Application
 metadata:
   name: hfi-frontend-prod
   namespace: argocd
-  annotations:
-    argocd-image-updater.argoproj.io/image-list: frontend=registry.gitlab.mfsys.com.pk/hfi/frontend
-    argocd-image-updater.argoproj.io/frontend.update-strategy: latest
-    argocd-image-updater.argocd.io/frontend.allow-tags: regexp:^prod-[0-9]+$
-    argocd-image-updater.argoproj.io/write-back-method: git
 spec:
   project: default
 
@@ -24,3 +19,5 @@ spec:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
