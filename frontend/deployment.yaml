@@ -6,7 +6,7 @@ metadata:
   labels:
     app: hfi-frontend
 spec:
-  replicas: 5
+  replicas: 3
 
   strategy:
     type: RollingUpdate
