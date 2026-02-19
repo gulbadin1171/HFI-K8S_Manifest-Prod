@@ -28,7 +28,7 @@ spec:
 
       containers:
         - name: frontend
-          image: registry.gitlab.mfsys.com.pk/hfi/frontend:prod-0
+          image: registry.gitlab.mfsys.com.pk/hfi/frontend:prod-27
           imagePullPolicy: Always
 
           ports:
